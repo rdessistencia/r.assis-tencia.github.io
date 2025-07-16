@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <link rel="icon" type="image/jpeg" href="/mnt/data/Logo.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R.Assistência - Reparos em Domicílio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
+    header.hero {
+      background: url('./logo.jpg') center/cover no-repeat;
+      color: gold;
+      padding: 5rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+    header.hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: gray;
+      background-image: url('./logo.jpg');
+      background-position: center;
+      background-size: cover; width: 100vw; height:100hw;
+      background-repeat: no-repeat;
+    }
+    header.hero > * {
+      position: relative;
+      z-index: 1;
+    }
+    header.hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    .hero-buttons a {
+      margin: 0.5rem;
+    }
+    .logo {
+      max-width: 100px;
+      display: block;
+      margin: 1rem auto;
+    }
+    .tab-content > section { display: none; padding: 2rem; }
+    .tab-content > section.active { display: block; }
+    nav a { color: gold !important; text-decoration: none; font-weight: bold; margin: 0 1rem; }
+    .servico { border: 1px solid ;color: gray ; padding: 1rem; border-radius: 0.5rem; background: white; margin-bottom: 1rem; }
+    .text-center {color: black;}
+    .tab-content {
+    background-color: lightgray;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <img src="" alt="" class="">
+    <h1>Soluções Domiciliares de Qualidade</h1>
+    <p class="lead">Serviços rápidos, confiáveis e profissionais para sua casa</p>
+    <div class="hero-buttons">
+      <a href="#" class="btn btn-warning" onclick="showTab('agendamento')">Solicitar Orçamento</a>
+      <a href="#" class="btn btn-primary" onclick="showTab('contato')">Fale Conosco</a>
+    </div>
+  </header>
+
+  <nav class="bg-primary p-3 text-center">
+    <a href="#" onclick="showTab('home')">Início</a>
+    <a href="#" onclick="showTab('agendamento')">Agendamento</a>
+    <a href="#" onclick="showTab('servicos')">Serviços Executados</a>
+    <a href="#" onclick="showTab('contato')">Contato</a>
+    <a href="#" onclick="showTab('admin')">Administração</a>
+  </nav>
+
+  <main class="tab-content">
+    <section id="home" class="active">
+      <h2 class="text-center mt-4">Bem-vindo à R.Assistência</h2>
+      <div class="row text-center mt-4">
+        <div class="col-md-4">
+          <img src="./wmremove-transformed.jpeg" class="img-fluid mb-3" alt="Residencial">
+          <h5>Serviços Residenciais</h5>
+          <p>Elétrica, hidráulica, manutenção geral e mais.</p>
+        </div>
+        <div class="col-md-4">
+          <img src="./Comercial.avif" class="img-fluid mb-3" alt="Comercial">
+          <h5>Instalações Comerciais</h5>
+          <p>Instalação e manutenção de equipamentos em comércios.</p>
+        </div>
+        <div class="col-md-4">
+          <img src="./Cano furado.jpg" class="img-fluid mb-3" alt="Reparos">
+          <h5>Reparos e Emergências</h5>
+          <p>Pronto atendimento para imprevistos no seu lar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="agendamento">
+      <h2 class="text-center">Agende um Serviço</h2>
+      <form class="container mt-4" onsubmit="enviarFormulario(event)">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="nome" class="form-label">Nome:</label>
+            <input type="text" id="nome" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <label for="telefone" class="form-label">Telefone:</label>
+            <input type="tel" id="telefone" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <label for="servico" class="form-label">Tipo de Serviço:</label>
+            <select id="servico" class="form-select">
+              <option>Elétrica</option>
+              <option>Hidráulica</option>
+              <option>Marcenaria</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label for="data" class="form-label">Data:</label>
+            <input type="date" id="data" class="form-control" required>
+          </div>
+          <div class="col-md-3">
+            <label for="hora" class="form-label">Hora:</label>
+            <input type="time" id="hora" class="form-control" required>
+          </div>
+          <div class="col-12">
+            <label for="obs" class="form-label">Observações:</label>
+            <textarea id="obs" class="form-control" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-success">Enviar</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="servicos">
+      <h2 class="text-center">Serviços Executados</h2>
+      <div class="container">
+        <div class="servico">
+          <p><strong>Tipo:</strong> Hidráulica</p>
+          <p><strong>Descrição:</strong> Troca de torneira na cozinha</p>
+          <p><strong>Data:</strong> 10/07/2025</p>
+          <video width="100%" height="auto" controls>
+            <source src="videos/torneira.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+          </video>
+        </div>
+        <div class="servico">
+          <p><strong>Tipo:</strong> Elétrica</p>
+          <p><strong>Descrição:</strong> Instalação de tomada 220V</p>
+          <p><strong>Data:</strong> 08/07/2025</p>
+          <video width="100%" height="auto" controls>
+            <source src="videos/tomada.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos HTML5.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <h2 class="text-center">Fale Conosco</h2>
+      <div class="text-center">
+        <p>📞 Telefone: (16) 99123-7253</p>
+        <p>📧 Email: rdeassistencia@gmail.com</p>
+        <p>📱 WhatsApp: <a href="https://wa.me/5516991237253" target="_blank">Clique aqui para conversar</a></p>
+      </div>
+    </section>
+
+    <section id="admin">
+      <h2 class="text-center">Área Administrativa</h2>
+      <p class="text-center">Visualize abaixo os serviços agendados:</p>
+      <ul id="lista-agendamentos" class="list-group container"></ul>
+    </section>
+  </main>
+
+  <footer class="text-center bg-dark text-white p-3">
+    <p>&copy; 2025 R.Assistência - Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    function showTab(id) {
+      document.querySelectorAll('.tab-content > section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function enviarFormulario(event) {
+      event.preventDefault();
+      const nome = document.getElementById('nome').value;
+      const telefone = document.getElementById('telefone').value;
+      const servico = document.getElementById('servico').value;
+      const data = document.getElementById('data').value;
+      const hora = document.getElementById('hora').value;
+      const obs = document.getElementById('obs').value;
+
+      const mensagem = `*Solicitação de Orçamento - R.Assistência*%0A%0A👤 *Nome:* ${nome}%0A📞 *Telefone:* ${telefone}%0A🔧 *Serviço:* ${servico}%0A📅 *Data:* ${data}%0A⏰ *Hora:* ${hora}%0A📝 *Observações:* ${obs}`;
+      const numeroWhatsApp = "5516991237253";
+      const url = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
+      window.open(url, '_blank');
+
+      const agendamento = { nome, telefone, servico, data, hora, obs };
+      const agendamentos = JSON.parse(localStorage.getItem('agendamentos') || '[]');
+      agendamentos.push(agendamento);
+      localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
+
+      alert("Orçamento enviado via WhatsApp!");
+      document.querySelector('#agendamento form').reset();
+      carregarAgendamentos();
+    }
+
+    function carregarAgendamentos() {
+      const agendamentos = JSON.parse(localStorage.getItem('agendamentos') || '[]');
+      const lista = document.getElementById('lista-agendamentos');
+      lista.innerHTML = '';
+      agendamentos.forEach(ag => {
+        const item = document.createElement('li');
+        item.className = "list-group-item";
+        item.textContent = `${ag.nome} - ${ag.servico} em ${ag.data} às ${ag.hora}`;
+        lista.appendChild(item);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', carregarAgendamentos);
+  </script>
+</body>
+</html>
