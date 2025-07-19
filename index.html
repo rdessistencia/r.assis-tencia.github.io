@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <link rel="icon" type="image/jpeg" href="/mnt/data/Logo.jpg">
+  <link rel="icon" type="image/png" href="./imagens/logo.jpg">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>R.Assistência - Reparos em Domicílio</title>
@@ -9,116 +9,253 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 <style>
-    body {
+/* Modern Glassmorphism & Soft UI */
+body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  background-image: url('./imagens/logo.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+  min-height: 100vh;
+  background-image: url(./imagens/logo.jpg);
 }
-    header.hero {
-      color: white;
-      padding: 2rem 1rem; /* Reduzido de 6rem para 2rem */
-      text-align: center;
-      position: relative;
-      background: none;
-    }
-    header.hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      
-    }
-    header.hero > * {
-      position: relative;
-      z-index: 1;
-    }
-    header.hero h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      font-family: 'Poppins', sans-serif;
-      color: yellow;
-      margin-top: 0.5rem; /* Aproxima do botão */
-      margin-bottom: 0.5rem; /* Aproxima do próximo texto */
-    }
-    .hero-buttons {
-      margin-bottom: 0.3rem; /* Reduzido para aproximar */
-    }
-    .hero-buttons a {
-      margin: 0.5rem;
-    }
-    .hero-buttons .btn-orcamento {
-      margin-bottom: 0; /* Remove margem extra abaixo do botão */
-    }
-    .logo {
-      max-width: 100px;
-      display: block;
-      margin: 1rem auto;
-    }
-    nav {
-      background: linear-gradient(to right, #007bff, #0056b3);
-    }
-    nav a {
-      color: white !important;
-      text-decoration: none;
-      font-weight: 600;
-      margin: 0 1rem;
-      padding: 0.5rem;
-      transition: background 0.3s ease;
-    }
-    nav a:hover {
-      background: rgb(87, 192, 240);
-      border-radius: 5px;
-    }
-    .tab-content > section {
-      display: none;
-      padding: 2rem;
-      animation: fadeIn 0.5s ease;
-      color: #d5e408;
-    }
-    .tab-content > section.active {
-      display: block;
-    }
-    .servico {
-      border: 1px solid #ddd;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      background: white;
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 4px lightyellow;
-    }
-    .comentario {
-      border-bottom: 1px solid #ccc;
-      padding: 0.5rem 0;
-    }
-    footer {
-      background-color: #343a40;
-      color: #fff;
-      padding: 1rem;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  /* Melhoria visual para o botão de orçamento */
-  .btn-orcamento:hover {
-    box-shadow: 0 0 10px gold;
-    transform: scale(1.05);
-    transition: all 0.2s;
-  }
-  .tab-content {
-    margin-top: 80px; /* Espaço para a barra fixa */
-  }
-  #home h2,
-#home h5,
-#home p {
+
+header.hero {
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  position: relative;
+  background: rgba(40, 60, 90, 0.7);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(40,60,90,0.18);
+  margin: 32px auto 0 auto;
+  max-width: 700px;
+  backdrop-filter: blur(6px);
+}
+
+header.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #d5e408;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+header.hero .lead {
   color: #f2f2f2;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
 }
+
+.hero-buttons button {
+  margin: 0.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(213,228,8,0.12);
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.hero-buttons .btn-orcamento {
+  background: linear-gradient(90deg, #d5e408 70%, #f7ff8c 100%);
+  color: #333;
+  border: none;
+}
+
+.hero-buttons .btn-primary {
+  background: linear-gradient(90deg, #007bff 70%, #87cefa 100%);
+  border: none;
+}
+
+.hero-buttons button:hover {
+  transform: scale(1.07);
+  box-shadow: 0 4px 16px rgba(87,192,240,0.18);
+}
+
+nav {
+  background: rgba(255,255,255,0.7);
+  box-shadow: 0 2px 12px rgba(87,192,240,0.08);
+  border-radius: 0 0 16px 16px;
+  backdrop-filter: blur(4px);
+}
+
+nav a {
+  color: #2d3a4a !important;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+}
+
+nav a:hover {
+  background: #d5e408;
+  color: #333 !important;
+}
+
+.social-icons {
+  background: rgba(255,255,255,0.6);
+  border-radius: 16px;
+  padding: 6px 12px;
+  box-shadow: 0 2px 8px rgba(87,192,240,0.12);
+}
+
+.social-icons a img {
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(40,60,90,0.10);
+}
+
+.social-icons a:hover img {
+  transform: scale(1.2);
+  box-shadow: 0 2px 8px #d5e408;
+}
+
+.tab-content {
+  margin-top: 100px;
+  padding-bottom: 32px;
+}
+
+.tab-content > section {
+  display: none;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease;
+  background: rgba(255,255,255,0.7);
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(87,192,240,0.10);
+  color: #2d3a4a;
+  margin-bottom: 32px;
+}
+
+.tab-content > section.active {
+  display: block;
+}
+
+#home h2, #home h5, #home p {
+  color: #2d3a4a;
+}
+
 #agendamento h2 {
   color: #d5e408;
+}
+
+#home .img-fluid {
+  transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+  border: 3px solid transparent;
+  cursor: pointer;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(87,192,240,0.10);
+}
+
+#home .img-fluid:hover {
+  transform: scale(1.08) rotate(-2deg);
+  box-shadow: 0 8px 24px rgba(213,228,8,0.18);
+  border: 3px solid #d5e408;
+}
+
+.servico {
+  border: none;
+  padding: 1rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.8);
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(87,192,240,0.10);
+}
+
+.comentario {
+  border-bottom: 1px solid #d5e408;
+  padding: 0.5rem 0;
+  color: #2d3a4a;
+}
+
+footer {
+  background: linear-gradient(90deg, #007bff 60%, #d5e408 100%);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -2px 12px rgba(87,192,240,0.08);
+  margin-top: 32px;
+}
+
+.whatsapp-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  background: linear-gradient(135deg, #25d366 60%, #128c7e 100%);
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35), 0 1.5px 4px #128c7e;
+  border: 3px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.12) rotate(-6deg);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.45), 0 2px 8px #128c7e;
+  background: linear-gradient(135deg, #128c7e 60%, #25d366 100%);
+}
+
+.whatsapp-float img {
+  display: block;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+}
+
+#whatsapp-chat {
+  position: fixed;
+  right: 30px;
+  bottom: 80px;
+  width: 320px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  border: 2px solid #25d366;
+  z-index: 10000;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeIn 0.3s;
+}
+
+#whatsapp-chat .chat-header {
+  background: linear-gradient(90deg,#25d366 60%,#128c7e 100%);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 16px 16px 0 0;
+  font-size: 1.1rem;
+}
+
+#whatsapp-chat .chat-body {
+  padding: 16px;
+  color: #222;
+}
+
+#chat-messages {
+  font-size: 0.98rem;
+}
+
+#close-chat {
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#chat-input {
+  border-radius: 8px;
+  border: 1px solid #d5e408;
+}
+
+#chat-form button {
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(213,228,8,0.12);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
 }
   </style>
 </head>
@@ -148,18 +285,19 @@
     </div>
   </header>
 
-  <nav class="p-3 text-center fixed-top">
-    <a href="#" onclick="showTab('home')">Início</a>
-    <a href="#" onclick="showTab('agendamento')">Agendamento</a>
-    <a href="#" onclick="showTab('servicos')">Serviços Executados</a>
-    <a href="#" onclick="showTab('comentarios')">Comentários</a>
-    <a href="#" onclick="showTab('contato')">Contato</a>
-    <a href="#" onclick="showTab('admin')">Administração</a>
-  </nav>
+  <nav class="p-3 text-center fixed-top d-flex align-items-center" style="background: rgba(255,255,255,0.7);">
+  <img src="./imagens/R.Assis-tencia_3D-removebg-preview.png" alt="Logo R.Assis-tência" style="height:38px; margin-right:18px; border-radius:8px;">
+  <a href="#" onclick="showTab('home')">Início</a>
+  <a href="#" onclick="showTab('agendamento')">Agendamento</a>
+  <a href="#" onclick="showTab('servicos')">Serviços Executados</a>
+  <a href="#" onclick="showTab('comentarios')">Comentários</a>
+  <a href="#" onclick="showTab('contato')">Contato</a>
+  <a href="#" onclick="showTab('admin')">Administração</a>
+</nav>
 
   <main class="tab-content">
         <section id="home" class="active">
-      <h2 class="text-center mt-4">Bem-vindo à R.Assis-tência</h2>
+      <h2 class="text-center mt-4">Podemos te ajudar? Temos Soluções</h2>
       <div class="row text-center mt-4">
         <div class="col-md-4">
           <a href="#" onclick="showTab('agendamento')" aria-label="Agendar Serviço Residencial">
@@ -176,7 +314,7 @@
           <p>Instalação e manutenção de equipamentos em comércios.</p>
         </div>
         <div class="col-md-4">
-          <a href="#" onclick="showTab('agendamento')" aria-label="Agendar Emergência">
+          <a href="https://wa.me/5516991237253" target="_blank" aria-label="Agendar Emergência via WhatsApp">
             <img src="./imagens/Cano furado.jpg" class="img-fluid mb-3" alt="Reparos">
           </a>
           <h5>Reparos e Emergências</h5>
@@ -294,10 +432,17 @@
         <section id="contato">
       <h2 class="text-center">Fale Conosco</h2>
       <div class="text-center">
-        <p>📞 Telefone: (16) 99123-7253</p>
-        <p>📧 Email: rdeassistencia@gmail.com</p>
-        <p>📱 WhatsApp: <a href="https://wa.me/5516991237253" target="_blank">Clique aqui para conversar</a></p>
-      </div>
+        <div class="d-flex justify-content-center align-items-center gap-4 mb-3">
+          <a href="tel:16991237253" aria-label="Telefone" class="contato-icone" target="_blank">
+            <svg width="36" height="36" fill="#25d366" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.11-.21c1.21.49 2.53.76 3.88.76.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1C7.61 22 2 16.39 2 9.5c0-.55.45-1 1-1H6.5c.55 0 1 .45 1 1 0 1.35.27 2.67.76 3.88a1.003 1.003 0 01-.21 1.11l-2.2 2.2z"/></svg>
+          </a>
+          <a href="mailto:rdeassistencia@gmail.com" aria-label="Email" class="contato-icone" target="_blank">
+            <svg width="36" height="36" fill="#007bff" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm-16 12V8.99l8 6.99 8-6.99V18H4z"/></svg>
+          </a>
+          <a href="https://wa.me/5516991237253" aria-label="WhatsApp" class="contato-icone" target="_blank">
+            <svg width="36" height="36" fill="#25d366" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.297-.767.967-.94 1.166-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.447-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.571-.01-.198 0-.52.075-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.348.711.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.075-.124-.272-.198-.57-.347z"/><path d="M12.004 2.003c-5.522 0-9.997 4.475-9.997 9.997 0 1.762.463 3.45 1.341 4.945l-1.417 5.188a1.001 1.001 0 001.217 1.217l5.188-1.417a9.953 9.953 0 004.945 1.341c5.522 0 9.997-4.475 9.997-9.997s-4.475-9.997-9.997-9.997zm0 18.001c-1.627 0-3.211-.438-4.584-1.267a1 1 0 00-.832-.09l-3.662 1.001 1.001-3.662a1 1 0 00-.09-.832A7.963 7.963 0 014.003 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
+          </a>
+        
     </section>
     <section id="comentarios">
       <h2 class="text-center">Comentários de Clientes</h2>
@@ -328,6 +473,148 @@
     <p>&copy; 2025 R.Assis-tência - Todos os direitos reservados.</p>
   </footer>
 
+  <!-- Ícones das redes sociais no topo -->
+<div class="social-icons" style="position:fixed; top:18px; right:30px; z-index:1100;">
+  <a href="https://wa.me/5516991237253" target="_blank" aria-label="WhatsApp" style="margin-right:10px;">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" width="28" style="vertical-align:middle;">
+  </a>
+  <a href="https://instagram.com/seuusuario" target="_blank" aria-label="Instagram" style="margin-right:10px;">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" width="28" style="vertical-align:middle;">
+  </a>
+  <a href="https://facebook.com/seuusuario" target="_blank" aria-label="Facebook">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" width="28" style="vertical-align:middle;">
+  </a>
+</div>
+
+  <a href="https://wa.me/5516991237253" target="_blank" class="whatsapp-float" aria-label="Fale pelo WhatsApp">
+  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" style="width:48px;height:48px;">
+</a>
+<style>
+.whatsapp-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  background: linear-gradient(135deg, #25d366 60%, #128c7e 100%);
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35), 0 1.5px 4px #128c7e;
+  border: 3px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.whatsapp-float:hover {
+  transform: scale(1.12) rotate(-6deg);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.45), 0 2px 8px #128c7e;
+  background: linear-gradient(135deg, #128c7e 60%, #25d366 100%);
+}
+.whatsapp-float img {
+  display: block;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+}
+</style>
+
+<!-- Caixa de chat WhatsApp -->
+<div id="whatsapp-chat" style="display:none;">
+  <div class="chat-header">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" width="32" style="vertical-align:middle;">
+    <span style="margin-left:8px;font-weight:600;">WhatsApp R.Assis-tência</span>
+    <button type="button" id="close-chat" style="float:right;background:none;border:none;font-size:22px;line-height:1;">×</button>
+  </div>
+  <div class="chat-body">
+    <div id="chat-messages" style="max-height:180px;overflow-y:auto;margin-bottom:10px;"></div>
+    <form id="chat-form">
+      <input type="text" id="chat-input" class="form-control mb-2" placeholder="Digite sua mensagem..." autocomplete="off" required>
+      <button type="submit" class="btn btn-success w-100">Enviar</button>
+    </form>
+  </div>
+</div>
+<style>
+#whatsapp-chat {
+  position: fixed;
+  right: 30px;
+  bottom: 80px;
+  width: 320px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  border: 2px solid #25d366;
+  z-index: 10000;
+  font-family: 'Poppins', sans-serif;
+  animation: fadeIn 0.3s;
+}
+
+#whatsapp-chat .chat-header {
+  background: linear-gradient(90deg,#25d366 60%,#128c7e 100%);
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 16px 16px 0 0;
+  font-size: 1.1rem;
+}
+
+#whatsapp-chat .chat-body {
+  padding: 16px;
+  color: #222;
+}
+
+#chat-messages {
+  font-size: 0.98rem;
+}
+
+#close-chat {
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#chat-input {
+  border-radius: 8px;
+  border: 1px solid #d5e408;
+}
+
+#chat-form button {
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(213,228,8,0.12);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+</style>
+<script>
+// Abrir caixa de chat ao clicar no ícone
+document.querySelector('.whatsapp-float').addEventListener('click', function(e) {
+  e.preventDefault();
+  document.getElementById('whatsapp-chat').style.display = 'block';
+});
+// Fechar caixa de chat
+document.getElementById('close-chat').onclick = function() {
+  document.getElementById('whatsapp-chat').style.display = 'none';
+};
+
+// Simulação de conversa
+document.getElementById('chat-form').onsubmit = function(e) {
+  e.preventDefault();
+  const input = document.getElementById('chat-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  const chat = document.getElementById('chat-messages');
+  // Adiciona mensagem do usuário
+  chat.innerHTML += `<div style="text-align:right;"><span style="background:#dcf8c6;padding:6px 12px;border-radius:12px;display:inline-block;margin:2px 0;">${msg}</span></div>`;
+  input.value = '';
+  chat.scrollTop = chat.scrollHeight;
+  // Resposta automática
+  setTimeout(() => {
+    chat.innerHTML += `<div style="text-align:left;"><span style="background:#eee;padding:6px 12px;border-radius:12px;display:inline-block;margin:2px 0;">Olá! Em breve um atendente irá responder.<br>Se preferir, <a href='https://wa.me/5516991237253' target='_blank'>clique aqui para conversar direto no WhatsApp</a>.</span></div>`;
+    chat.scrollTop = chat.scrollHeight;
+  }, 800);
+};
+</script>
+
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyBAHgGEY0GaNS3v1CWVwHaS-wbyPUsQ2Ao",
@@ -355,17 +642,25 @@
       const hora = document.getElementById('hora').value;
       const obs = document.getElementById('obs').value;
 
+      // Mensagem de orçamento
       const mensagem = `*Solicitação de Orçamento - R.Assistência*%0A%0A👤 *Nome:* ${nome}%0A📞 *Telefone:* ${telefone}%0A🔧 *Serviço:* ${servico}%0A📅 *Data:* ${data}%0A⏰ *Hora:* ${hora}%0A📝 *Observações:* ${obs}`;
       const numeroWhatsApp = "5516991237253";
       const url = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
       window.open(url, '_blank');
+
+      // Mensagem de lembrete
+      const lembrete = `Olá ${nome}, este é um lembrete do seu agendamento na R.Assistência:%0A%0A🔧 *Serviço:* ${servico}%0A📅 *Data:* ${data}%0A⏰ *Hora:* ${hora}%0A%0AEm caso de dúvidas, entre em contato conosco!`;
+      const urlLembrete = `https://wa.me/${telefone.replace(/\D/g, '')}?text=${lembrete}`;
+      setTimeout(() => {
+        window.open(urlLembrete, '_blank');
+      }, 1000); // Abre o lembrete após 1 segundo
 
       const agendamento = { nome, telefone, servico, data, hora, obs };
       const agendamentos = JSON.parse(localStorage.getItem('agendamentos') || '[]');
       agendamentos.push(agendamento);
       localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
 
-      alert("Orçamento enviado via WhatsApp!");
+      alert("Orçamento enviado via WhatsApp!\nUm lembrete será enviado para o WhatsApp informado.");
       document.querySelector('#agendamento form').reset();
       carregarAgendamentos();
     }
