@@ -149,12 +149,12 @@
   </header>
 
   <nav class="p-3 text-center fixed-top">
-    <a href="#" onclick="showTab('home')">Início</a>
-    <a href="#" onclick="showTab('agendamento')">Agendamento</a>
-    <a href="#" onclick="showTab('servicos')">Serviços Executados</a>
-    <a href="#" onclick="showTab('comentarios')">Comentários</a>
-    <a href="#" onclick="showTab('contato')">Contato</a>
-    <a href="#" onclick="showTab('admin')">Administração</a>
+    <button type="button" class="nav-link btn btn-link p-0" onclick="showTab('home')">Início</button>
+    <button type="button" class="nav-link btn btn-link p-0" onclick="showTab('agendamento')">Agendamento</button>
+    <button type="button" class="nav-link btn btn-link p-0" onclick="showTab('servicos')">Serviços Executados</button>
+    <button type="button" class="nav-link btn btn-link p-0" onclick="showTab('comentarios')">Comentários</button>
+    <button type="button" class="nav-link btn btn-link p-0" onclick="showTab('contato')">Contato</button>
+    <button type="button" class="nav-link btn btn-link p-0" onclick="showTab('admin')">Administração</button>
   </nav>
 
   <main class="tab-content">
@@ -162,23 +162,23 @@
       <h2 class="text-center mt-4">Bem-vindo à R.Assis-tência</h2>
       <div class="row text-center mt-4">
         <div class="col-md-4">
-          <a href="#" onclick="showTab('agendamento')" aria-label="Agendar Serviço Residencial">
+          <button type="button" onclick="showTab('agendamento')" aria-label="Agendar Serviço Residencial" style="background:none;border:none;padding:0;">
             <img src="./imagens/wmremove-transformed.jpeg" class="img-fluid mb-3" alt="Residencial">
-          </a>
+          </button>
           <h5>Serviços Residenciais</h5>
           <p>Elétrica, hidráulica, manutenção geral e mais.</p>
         </div>
         <div class="col-md-4">
-          <a href="#" onclick="showTab('agendamento')" aria-label="Agendar Serviço Comercial">
+          <button type="button" onclick="showTab('agendamento')" aria-label="Agendar Serviço Comercial" style="background:none;border:none;padding:0;">
             <img src="./imagens/Comercial.avif" class="img-fluid mb-3" alt="Comercial">
-          </a>
+          </button>
           <h5>Instalações Comerciais</h5>
           <p>Instalação e manutenção de equipamentos em comércios.</p>
         </div>
         <div class="col-md-4">
-          <a href="#" onclick="showTab('agendamento')" aria-label="Agendar Emergência">
+          <button type="button" onclick="showTab('agendamento')" aria-label="Agendar Emergência" style="background:none;border:none;padding:0;">
             <img src="./imagens/Cano furado.jpg" class="img-fluid mb-3" alt="Reparos">
-          </a>
+          </button>
           <h5>Reparos e Emergências</h5>
           <p>Pronto atendimento para imprevistos no seu lar.</p>
         </div>
