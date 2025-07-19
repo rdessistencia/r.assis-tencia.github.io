@@ -149,12 +149,12 @@
   </header>
 
   <nav class="p-3 text-center fixed-top">
-    <button type="button" class="nav-link btn btn-link p-0" onclick="showTab('home')">Início</button>
-    <button type="button" class="nav-link btn btn-link p-0" onclick="showTab('agendamento')">Agendamento</button>
-    <button type="button" class="nav-link btn btn-link p-0" onclick="showTab('servicos')">Serviços Executados</button>
-    <button type="button" class="nav-link btn btn-link p-0" onclick="showTab('comentarios')">Comentários</button>
-    <button type="button" class="nav-link btn btn-link p-0" onclick="showTab('contato')">Contato</button>
-    <button type="button" class="nav-link btn btn-link p-0" onclick="showTab('admin')">Administração</button>
+    <a href="#" onclick="showTab('home')">Início</a>
+    <a href="#" onclick="showTab('agendamento')">Agendamento</a>
+    <a href="#" onclick="showTab('servicos')">Serviços Executados</a>
+    <a href="#" onclick="showTab('comentarios')">Comentários</a>
+    <a href="#" onclick="showTab('contato')">Contato</a>
+    <a href="#" onclick="showTab('admin')">Administração</a>
   </nav>
 
   <main class="tab-content">
@@ -162,23 +162,23 @@
       <h2 class="text-center mt-4">Bem-vindo à R.Assis-tência</h2>
       <div class="row text-center mt-4">
         <div class="col-md-4">
-          <button type="button" onclick="showTab('agendamento')" aria-label="Agendar Serviço Residencial" style="background:none;border:none;padding:0;">
+          <a href="#" onclick="showTab('agendamento')" aria-label="Agendar Serviço Residencial">
             <img src="./imagens/wmremove-transformed.jpeg" class="img-fluid mb-3" alt="Residencial">
-          </button>
+          </a>
           <h5>Serviços Residenciais</h5>
           <p>Elétrica, hidráulica, manutenção geral e mais.</p>
         </div>
         <div class="col-md-4">
-          <button type="button" onclick="showTab('agendamento')" aria-label="Agendar Serviço Comercial" style="background:none;border:none;padding:0;">
+          <a href="#" onclick="showTab('agendamento')" aria-label="Agendar Serviço Comercial">
             <img src="./imagens/Comercial.avif" class="img-fluid mb-3" alt="Comercial">
-          </button>
+          </a>
           <h5>Instalações Comerciais</h5>
           <p>Instalação e manutenção de equipamentos em comércios.</p>
         </div>
         <div class="col-md-4">
-          <button type="button" onclick="showTab('agendamento')" aria-label="Agendar Emergência" style="background:none;border:none;padding:0;">
+          <a href="#" onclick="showTab('agendamento')" aria-label="Agendar Emergência">
             <img src="./imagens/Cano furado.jpg" class="img-fluid mb-3" alt="Reparos">
-          </button>
+          </a>
           <h5>Reparos e Emergências</h5>
           <p>Pronto atendimento para imprevistos no seu lar.</p>
         </div>
@@ -226,23 +226,67 @@
     <section id="servicos">
       <h2 class="text-center">Serviços Executados</h2>
       <div class="container">
-        <div class="servico">
-          <p><strong>Tipo:</strong> Hidráulica</p>
-          <p><strong>Descrição:</strong> Troca de torneira na cozinha</p>
-          <p><strong>Data:</strong> 10/07/2025</p>
-          <video width="100%" height="auto" controls>
-            <source src="videos/torneira.mp4" type="video/mp4">
-            Seu navegador não suporta vídeos HTML5.
-          </video>
-        </div>
-        <div class="servico">
-          <p><strong>Tipo:</strong> Elétrica</p>
-          <p><strong>Descrição:</strong> Instalação de tomada 220V</p>
-          <p><strong>Data:</strong> 08/07/2025</p>
-          <video width="100%" height="auto" controls>
-            <source src="videos/tomada.mp4" type="video/mp4">
-            Seu navegador não suporta vídeos HTML5.
-          </video>
+        <div id="servicosCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <!-- Residenciais -->
+            <div class="carousel-item active" id="residenciais">
+              <h4 class="text-center">Residenciais</h4>
+              <div class="servico">
+                <img src="./imagens/residencial1.jpg" class="img-fluid mb-2" alt="Residencial 1">
+                <img src="./imagens/residencial2.jpg" class="img-fluid mb-2" alt="Residencial 2">
+                <img src="./imagens/residencial3.jpg" class="img-fluid mb-2" alt="Residencial 3">
+                <video controls width="100%" class="mb-2">
+                  <source src="" type="video/mp4">
+                  Seu navegador não suporta vídeo.
+                </video>
+                <video controls width="100%" class="mb-2">
+                  <source src="" type="video/mp4">
+                  Seu navegador não suporta vídeo.
+                </video>
+                Instalação de chuveiro, elétrica e hidráulica
+              </div>
+            </div>
+            <!-- Comerciais -->
+            <div class="carousel-item" id="comerciais">
+              <h4 class="text-center">Comerciais</h4>
+              <div class="servico">
+                <img src="./imagens/comercial1.jpg" class="img-fluid mb-2" alt="Comercial 1">
+                <img src="./imagens/comercial2.jpg" class="img-fluid mb-2" alt="Comercial 2">
+                <video controls width="100%" class="mb-2">
+                  <source src="./videos/comercial1.mp4" type="video/mp4">
+                  Seu navegador não suporta vídeo.
+                </video>
+                <video controls width="100%" class="mb-2">
+                  <source src="./videos/comercial2.mp4" type="video/mp4">
+                  Seu navegador não suporta vídeo.
+                </video>
+                Manutenção elétrica em escritórios e comércios
+              </div>
+            </div>
+            <!-- Emergência -->
+            <div class="carousel-item" id="emergencia">
+              <h4 class="text-center">Emergência</h4>
+              <div class="servico">
+                <img src="./imagens/emergencia1.jpg" class="img-fluid mb-2" alt="Emergência 1">
+                <img src="./imagens/emergencia2.jpg" class="img-fluid mb-2" alt="Emergência 2">
+                <video controls width="100%" class="mb-2">
+                  <source src="./videos/emergencia1.mp4" type="video/mp4">
+                  Seu navegador não suporta vídeo.
+                </video>
+                <video controls width="100%" class="mb-2">
+                  <source src="./videos/emergencia2.mp4" type="video/mp4">
+                  Seu navegador não suporta vídeo.
+                </video>
+                Reparos urgentes 24h
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#servicosCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#servicosCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
         </div>
       </div>
     </section>
